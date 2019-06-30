@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+<h2>@ViewBag.Title.</h2>
+
+<p><a href="@Url.Action("EmployeeData", "Home")">Create New</a></p>
+
+<table id="grid" class="display nowrap" width="100%">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Join Date</th>
+            <th>Photo</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Departement</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts{
+    <script src="~/Scripts/MVC_ODATA_AJAX.List.js"></script>
+}
