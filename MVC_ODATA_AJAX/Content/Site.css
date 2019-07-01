@@ -26,3 +26,11 @@ textarea {
 input[type=search] {
     -webkit-appearance: textfield;
 }
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

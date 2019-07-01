@@ -3,7 +3,7 @@
 }
 <h2>@ViewBag.Title.</h2>
 
-<p><a href="@Url.Action("EmployeeData", "Home")">Create New</a></p>
+<p><a onclick="$('#PhotoInput').prop('required', true)" data-toggle="modal" data-target="#modal1">Create New</a></p>
 
 <table id="grid" class="display nowrap" width="100%">
     <thead>
@@ -19,6 +19,74 @@
         </tr>
     </thead>
 </table>
+
+<div id="modal1" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">New Data</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form method="post" name="form1" id="form1" class="form-horizontal form_required" enctype="multipart/form-data">
+                            <input type="hidden" id="hdfID" name="hdfID">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="txtName" id="txtName" class="form-control" required>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Join Date:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="txtJoinDate" id="txtJoinDate" class="form-control datepicker" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Height:</label>
+                                <div class="col-sm-9">
+                                    <input type="number" name="txtHeight" id="txtHeight" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Weight:</label>
+                                <div class="col-sm-9">
+                                    <input type="number" name="txtWeight" id="txtWeight" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Photo:</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="PhotoInput" id="PhotoInput" accept="application/pdf" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Department:</label>
+                                <div class="col-sm-9">
+                                    <select name="ddlDepartment" id="ddlDepartment" class="form-control" style="width:100%" required>
+                                        @foreach (var item in ViewBag.DepartementListItem)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <input type="button" id="btnSubmit" class="btn btn-success" value="Submit" onclick="addRow()">
+                                    <input type="button" class="btn btn-default" value="Cancel" onclick="clearForm('form1');$('#modal1').modal('toggle');">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts{
     <script src="~/Scripts/MVC_ODATA_AJAX.List.js"></script>
